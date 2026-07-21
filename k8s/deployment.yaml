@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
         - name: demo-api
-          image: demo-api:v1
+          image: ghcr.io/stefanbuzu/k8s-prac:latest
           ports:
             - containerPort: 3000
-          imagePullPolicy: Never
