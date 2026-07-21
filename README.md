@@ -18,7 +18,8 @@ Code push → GitHub Actions → updates values.yaml → ArgoCD syncs to cluster
 │   ├── values.yaml                    # Image tag, replicas
 │   └── templates/
 │       ├── deployment.yaml
-│       └── service.yaml
+│       ├── service.yaml
+│       └── rbac.yaml                  # Admin + readonly roles
 ├── argocd-app.yaml                    # ArgoCD Application config
 └── .github/workflows/build-and-push.yaml  # CI pipeline
 ```
