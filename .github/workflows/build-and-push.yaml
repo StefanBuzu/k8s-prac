@@ -23,13 +23,13 @@ jobs:
 
       - name: Build and push image
         run: |
-          IMAGE=ghcr.io/${{ github.repository }}:${{ github.sha }}
+          IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}:${{ github.sha }}
           docker build -t $IMAGE .
           docker push $IMAGE
 
       - name: Update manifest with new image tag
         run: |
-          IMAGE=ghcr.io/${{ github.repository }}:${{ github.sha }}
+          IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}:${{ github.sha }}
           sed -i "s|image: ghcr.io/stefanbuzu/k8s-prac:.*|image: $IMAGE|" k8s/deployment.yaml
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
