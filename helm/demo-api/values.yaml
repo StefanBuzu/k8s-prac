@@ -1,0 +1,5 @@
+replicas: 3
+
+image:
+  repository: ghcr.io/stefanbuzu/k8s-prac
+  tag: latest
