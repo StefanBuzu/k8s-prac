@@ -1,0 +1,54 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: admin-role
+  namespace: default
+rules:
+  - apiGroups: ["", "apps", "batch"]
+    resources: ["*"]
+    verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: admin-binding
+  namespace: default
+subjects:
+  - kind: User
+    name: admin-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: admin-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: readonly-role
+  namespace: default
+rules:
+  - apiGroups: ["", "apps"]
+    resources: ["pods", "services", "deployments", "configmaps"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: readonly-binding
+  namespace: default
+subjects:
+  - kind: User
+    name: readonly-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: readonly-role
+  apiGroup: rbac.authorization.k8s.io
