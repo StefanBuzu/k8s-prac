@@ -3,10 +3,13 @@ kind: Service
 metadata:
   name: demo-api
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: demo-api
   ports:
     - port: 80
       targetPort: 3000
-      nodePort: 30080
+# type: LoadBalancer
+# ports:
+#   - port: 80
+#     targetPort: 3000
