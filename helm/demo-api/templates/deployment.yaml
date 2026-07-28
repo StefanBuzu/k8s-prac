@@ -12,6 +12,10 @@ spec:
       labels:
         app: demo-api
     spec:
+      tolerations:
+        - key: "gpu"
+          value: "true"
+          effect: "NoExecute"
       containers:
         - name: demo-api
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
