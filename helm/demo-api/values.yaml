@@ -2,4 +2,4 @@ replicas: 3
 
 image:
   repository: ghcr.io/stefanbuzu/k8s-prac
-  tag: e18a9bae20c93e9356aec788c7773582cc2d532f
+  tag: b14718bd851c618dc9e70a92ac80ac8fe06d7c01
