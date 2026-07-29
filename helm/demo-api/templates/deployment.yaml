@@ -19,6 +19,9 @@ spec:
       containers:
         - name: demo-api
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          envFrom:
+            - configMapRef:
+                name: demo-api-config
           ports:
             - containerPort: 3000
           resources:
